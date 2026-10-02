@@ -2136,137 +2136,15 @@
             border-color: #78350F;
         }
 
-    
-        /* ==================== COMPLETE MOBILE & TABLET RESPONSIVENESS ==================== */
-        .sidebar-backdrop {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(3px);
-            z-index: 95;
-            transition: opacity 0.3s ease;
-        }
-        .sidebar-backdrop.active {
-            display: block;
-        }
-        .sb-mobile-close-btn {
-            display: none;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 16px;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @media (max-width: 900px) {
-            .sb-mobile-close-btn {
-                display: flex;
-            }
-            .app-sidebar {
-                transform: translateX(-100%);
-                width: 280px;
-                max-width: 85vw;
-                box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
-            }
-            .app-sidebar.open {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0 !important;
-                width: 100% !important;
-            }
-            .app-topbar {
-                height: auto;
-                min-height: 60px;
-                padding: 10px 14px;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            .topbar-left {
-                width: auto;
-            }
-            .topbar-actions {
-                width: 100%;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 4px;
-                -webkit-overflow-scrolling: touch;
-                gap: 6px;
-            }
-            .content-area {
-                padding: 14px 10px;
-            }
-            .card {
-                padding: 16px 14px !important;
-            }
-            .stat-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 8px;
-            }
-            .plan-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr !important;
-            }
-            .table-box {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .table-box table {
-                min-width: 580px;
-            }
-            .modal-card {
-                width: 94vw !important;
-                max-height: 90vh !important;
-                padding: 18px 14px !important;
-                margin: 8px !important;
-            }
-        }
-
-        @media (max-width: 600px) {
-            body { font-size: 14px; }
-            .page-title { font-size: 16px !important; }
-            .btn { padding: 9px 14px; font-size: 13px; }
-            .stat-card { padding: 12px 10px; }
-            .stat-val { font-size: 20px !important; }
-            #nextMedName { font-size: 20px !important; }
-            #dashGreetingTitle { font-size: 20px !important; }
-            .plan-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .stepper-header {
-                font-size: 10px;
-            }
-            .step-bubble {
-                width: 24px;
-                height: 24px;
-                font-size: 11px;
-            }
-            .tools-accordion-summary {
-                padding: 12px 14px;
-                font-size: 13px;
-            }
-        }
-
     </style>
 </head>
 
 <body>
-    <!-- Mobile Sidebar Backdrop Overlay -->
-    <div id="sidebarBackdrop" class="sidebar-backdrop" onclick="toggleSidebar()"></div>
 
     <!-- ==================== SIDEBAR ==================== -->
     <aside class="app-sidebar" id="appSidebar">
-        <div class="sb-brand" style="justify-content:space-between;">
-            <div style="display:flex; align-items:center; gap:12px;">
-                <div class="careloop-icon-wrap">
+        <div class="sb-brand">
+            <div class="careloop-icon-wrap">
                 <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="44" stroke="#00C49F" stroke-width="5" stroke-dasharray="8 6" stroke-linecap="round" fill="none"/>
                     <circle cx="50" cy="50" r="33" stroke="#0284C7" stroke-width="7.5" fill="#0A1E34"/>
@@ -2418,10 +2296,10 @@
 
                         <!-- 108 SOS & Medical ID Quick Box -->
                         <div style="display:flex; flex-direction:column; gap:8px; min-width:260px; max-width:100%;">
-                            <button class="btn danger" id="dashSosBtn" style="padding:14px 18px; font-size:16px; font-weight:900; border-radius:12px; box-shadow:0 4px 12px rgba(220,38,38,0.25);" onclick="triggerSOS()">
+                            <button class="btn danger" style="padding:14px 18px; font-size:16px; font-weight:900; border-radius:12px; box-shadow:0 4px 12px rgba(220,38,38,0.25);" onclick="triggerSOS()">
                                 🚨 108 आपातकालीन SOS कॉल
                             </button>
-                            <div id="dashMedIdBox" style="background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:12px; color:var(--muted); line-height:1.4;">
+                            <div style="background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:12px; color:var(--muted); line-height:1.4;">
                                 🩸 <strong>ब्लड ग्रुप:</strong> B+ • <strong>एलर्जी:</strong> Sulfa Drugs<br>
                                 👨‍⚕️ <strong>केयरगिवर:</strong> <span id="dashCaregiverText">अमित शर्मा (+91 98765 43210)</span>
                             </div>
@@ -4843,176 +4721,46 @@
             currentLang = lang;
             localStorage.setItem('appLang', lang);
 
-            // 1. Update Lang Switcher Buttons
-            document.getElementById('btnLangHi')?.classList.toggle('active', lang === 'hi');
-            document.getElementById('btnLangEn')?.classList.toggle('active', lang === 'en');
-            document.getElementById('authLangHi')?.classList.toggle('active', lang === 'hi');
-            document.getElementById('authLangEn')?.classList.toggle('active', lang === 'en');
+            document.getElementById('btnLangHi').classList.toggle('active', lang === 'hi');
+            document.getElementById('btnLangEn').classList.toggle('active', lang === 'en');
 
-            // 2. Translate all [data-i18n] elements
-            const dict = I18N[lang] || I18N.hi;
+            const authHi = document.getElementById('authLangHi');
+            const authEn = document.getElementById('authLangEn');
+            if (authHi && authEn) {
+                authHi.classList.toggle('active', lang === 'hi');
+                authEn.classList.toggle('active', lang === 'en');
+            }
+
+            const dict = I18N[lang];
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (dict[key]) el.innerText = dict[key];
             });
 
-            // 3. Update Input Placeholders safely
-            const safeSetPlaceholder = (id, text) => {
-                const el = document.getElementById(id);
-                if (el) el.placeholder = text;
-            };
-            const safeSetText = (id, text) => {
-                const el = document.getElementById(id);
-                if (el) el.innerText = text;
-            };
-            const safeSetHTML = (id, html) => {
-                const el = document.getElementById(id);
-                if (el) el.innerHTML = html;
-            };
-
             if (lang === 'en') {
-                safeSetPlaceholder('sbSearchInput', "Search menu...");
-                safeSetPlaceholder('humanDiseaseInput', "Type your disease (e.g. Fever, BP)...");
-                safeSetPlaceholder('loginPhone', "10-digit mobile number (e.g. 9876543210)");
-                safeSetPlaceholder('loginPin', "Enter 4-digit PIN");
-                safeSetPlaceholder('loginOtp', "Enter 4-digit OTP");
-                safeSetPlaceholder('regName', "e.g. Sunita Devi / Rajesh Kumar");
-                safeSetPlaceholder('regPhone', "10 digits");
-                safeSetPlaceholder('regPin', "e.g. 1234");
-                safeSetPlaceholder('regAllergies', "e.g. Sulfa drugs, Penicillin");
-                safeSetPlaceholder('regCaregiverName', "e.g. Amit Sharma (Son)");
-                safeSetPlaceholder('regCaregiverPhone', "10 digits");
-                safeSetPlaceholder('dirSearch', "Search doctor, specialty (Heart, BP, Sugar) or hospital...");
-                safeSetPlaceholder('vitalSugar', "mg/dL");
-
-                safeSetText('topVoiceBtn', "Voice Readout");
-                safeSetText('lblContrast', "Contrast");
-                safeSetText('lblInstallApp', "Install App");
-                safeSetText('sbBrandTagline', "On-Time Medicine Companion");
-                safeSetText('rxLoadingStepText', "Uploading & scanning photo...");
-                safeSetText('nearMeText', isNearMeActive ? "Near Me: Lucknow (Active)" : "Near Me");
-
-                // Patient Profile Select Options
-                const patSel = document.getElementById('activePatientSelect');
-                if (patSel && patSel.options.length >= 3) {
-                    patSel.options[0].text = "Mr. Ramesh Sharma (Father - 68)";
-                    patSel.options[1].text = "Mrs. Sunita Sharma (Mother - 65)";
-                    patSel.options[2].text = "+ Add New Profile";
-                }
-
-                // Next Dose Card Buttons & Labels
-                safeSetText('btnNextTakeNow', "✓ Mark Taken");
-                safeSetText('btnNextSnooze', "⏰ Snooze 10 min");
-                safeSetText('btnNextSkip', "✕ Skip Dose");
-
-                // Collapsible Tools Accordion
-                const acc = document.querySelector('.tools-accordion-summary');
-                if (acc) {
-                    acc.innerHTML = `<span>🛠️ Additional Health Tools (Vitals, Appointments, Family Alert & GPS)</span><span style="font-size:12px; color:var(--primary); font-weight:700;">[Expand / Collapse]</span>`;
-                }
-
-                // Vitals Widget
-                safeSetHTML('vitalsWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">🩺 Vitals (BP & Blood Sugar)</h4>`);
-                safeSetText('btnVitalsSave', "Save");
-                safeSetText('lblTrendBp', "7-Day BP Trend (Systolic):");
-
-                // Caregiver Alert Widget
-                safeSetHTML('cgWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">👨‍👩‍👧 Family Safety Alert</h4>`);
-                safeSetText('btnCgUpdate', "📲 WhatsApp Health Update");
-                safeSetText('btnCgTestAlert', "⚠️ Test Alert");
-
-                // Doctor Appt Widget
-                safeSetHTML('apptWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">📅 Next Doctor Appointment</h4>`);
-                safeSetText('btnApptDirections', "🗺️ Directions");
-                safeSetText('btnApptViewDir', "View Directory");
-
-                // Live GPS Widget
-                safeSetHTML('gpsWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">📍 Live GPS & Safe Zone</h4>`);
-                safeSetText('btnGpsShare', "📲 Share Location with Family");
-                safeSetText('btnGpsMap', "🗺️ Map");
-
+                document.getElementById('sbSearchInput').placeholder = "Search menu...";
+                document.getElementById('humanDiseaseInput').placeholder = "Type your disease (e.g. Fever, BP)...";
+                document.getElementById('topVoiceBtn').innerText = "Voice Readout";
+                document.getElementById('rxLoadingText').innerText = "Uploading & scanning photo...";
+                document.getElementById('loginPhone').placeholder = "10-digit mobile number (e.g. 9876543210)";
+                document.getElementById('loginPin').placeholder = "Enter 4-digit PIN (e.g. 1234)";
+                document.getElementById('regName').placeholder = "e.g. Sunita Devi / Rajesh Kumar";
+                document.getElementById('regPhone').placeholder = "10 digits";
+                document.getElementById('dirSearch').placeholder = "Search doctor name, hospital, city or specialty (Heart, BP, Sugar)...";
+                document.getElementById('nearMeText').innerText = isNearMeActive ? "Near Me: Lucknow (Active)" : "Near Me";
             } else {
-                safeSetPlaceholder('sbSearchInput', "मेन्यू में खोजें...");
-                safeSetPlaceholder('humanDiseaseInput', "अपनी बीमारी लिखें (जैसे: बुखार, बीपी)...");
-                safeSetPlaceholder('loginPhone', "10-अंकीय मोबाइल नंबर (उदा: 9876543210)");
-                safeSetPlaceholder('loginPin', "4-अंकीय पिन दर्ज करें");
-                safeSetPlaceholder('loginOtp', "4-अंकीय OTP दर्ज करें");
-                safeSetPlaceholder('regName', "उदा: श्रीमती सुनीता देवी / श्री राजेश कुमार");
-                safeSetPlaceholder('regPhone', "10 अंक");
-                safeSetPlaceholder('regPin', "उदा: 1234");
-                safeSetPlaceholder('regAllergies', "उदा: सल्फा ड्रग्स, पेनिसिलिन");
-                safeSetPlaceholder('regCaregiverName', "उदा: अमित शर्मा (बेटा)");
-                safeSetPlaceholder('regCaregiverPhone', "10 अंक");
-                safeSetPlaceholder('dirSearch', "डॉक्टर का नाम, बीमारी (हार्ट, बीपी, शुगर) या अस्पताल खोजें...");
-                safeSetPlaceholder('vitalSugar', "mg/dL");
-
-                safeSetText('topVoiceBtn', "आवाज से सुनें");
-                safeSetText('lblContrast', "कंट्रास्ट");
-                safeSetText('lblInstallApp', "ऐप इंस्टॉल");
-                safeSetText('sbBrandTagline', "सही समय पर दवाई साथी");
-                safeSetText('rxLoadingStepText', "फोटो अपलोड व स्कैन हो रही है...");
-                safeSetText('nearMeText', isNearMeActive ? "पास के (Near Me: लखनऊ सक्रिय)" : "पास के (Near Me)");
-
-                // Patient Profile Select Options
-                const patSel = document.getElementById('activePatientSelect');
-                if (patSel && patSel.options.length >= 3) {
-                    patSel.options[0].text = "श्री रमेश शर्मा (पिताजी - 68)";
-                    patSel.options[1].text = "श्रीमती सुनीता शर्मा (माताजी - 65)";
-                    patSel.options[2].text = "+ नया प्रोफाइल जोड़ें";
-                }
-
-                // Next Dose Card Buttons & Labels
-                safeSetText('btnNextTakeNow', "✓ दवा ले ली (Mark Taken)");
-                safeSetText('btnNextSnooze', "⏰ 10 मिनट स्नूज़");
-                safeSetText('btnNextSkip', "✕ छोड़ दी (Skip)");
-
-                // Collapsible Tools Accordion
-                const acc = document.querySelector('.tools-accordion-summary');
-                if (acc) {
-                    acc.innerHTML = `<span>🛠️ अतिरिक्त स्वास्थ्य टूल्स (वाइटल्स, अपॉइंटमेंट, परिवार अलर्ट व जीपीएस)</span><span style="font-size:12px; color:var(--primary); font-weight:700;">[विस्तार / संक्षिप्त]</span>`;
-                }
-
-                // Vitals Widget
-                safeSetHTML('vitalsWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">🩺 वाइटल्स (बीपी व ब्लड शुगर)</h4>`);
-                safeSetText('btnVitalsSave', "सेव");
-                safeSetText('lblTrendBp', "7-दिवसीय बीपी ट्रेंड (Systolic):");
-
-                // Caregiver Alert Widget
-                safeSetHTML('cgWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">👨‍👩‍👧 परिवार सुरक्षा अलर्ट</h4>`);
-                safeSetText('btnCgUpdate', "📲 WhatsApp स्वास्थ्य अपडेट");
-                safeSetText('btnCgTestAlert', "⚠️ टेस्ट अलर्ट");
-
-                // Doctor Appt Widget
-                safeSetHTML('apptWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">📅 अगला डॉक्टर अपॉइंटमेंट</h4>`);
-                safeSetText('btnApptDirections', "🗺️ दिशानिर्देश (Directions)");
-                safeSetText('btnApptViewDir', "सूची देखें");
-
-                // Live GPS Widget
-                safeSetHTML('gpsWidgetHeader', `<h4 style="margin:0; font-size:14.5px; font-weight:800;">📍 लाइव जीपीएस व सुरक्षित क्षेत्र</h4>`);
-                safeSetText('btnGpsShare', "📲 परिवार से लोकेशन शेयर");
-                safeSetText('btnGpsMap', "🗺️ मैप");
+                document.getElementById('sbSearchInput').placeholder = "मेन्यू में खोजें...";
+                document.getElementById('humanDiseaseInput').placeholder = "अपनी बीमारी लिखें (जैसे: Fever, बुखार, BP)...";
+                document.getElementById('topVoiceBtn').innerText = "आवाज से सुनें";
+                document.getElementById('rxLoadingText').innerText = "फोटो अपलोड व स्कैन हो रही है...";
+                document.getElementById('loginPhone').placeholder = "10-अंकीय मोबाइल नंबर (उदा: 9876543210)";
+                document.getElementById('loginPin').placeholder = "4-अंकीय पिन दर्ज करें (उदा: 1234)";
+                document.getElementById('regName').placeholder = "उदा: श्रीमती सुनीता देवी / श्री राजेश कुमार";
+                document.getElementById('regPhone').placeholder = "10 अंक";
+                document.getElementById('dirSearch').placeholder = "डॉक्टर का नाम, बीमारी (हार्ट, बीपी, शुगर, हड्डी) या अस्पताल खोजें...";
+                document.getElementById('nearMeText').innerText = isNearMeActive ? "पास के (Near Me: लखनऊ सक्रिय)" : "पास के (Near Me)";
             }
 
-            // 4. Update Current Page Title
-            const activePage = document.querySelector('.page-view.active');
-            if (activePage) {
-                const pageId = activePage.id;
-                const titles = {
-                    dashboard: dict.navDash || "Dashboard",
-                    prescription: dict.navPrescription || "Prescription Scanner",
-                    medicines: dict.navMedicines || "My Medicines",
-                    history: dict.navHistory || "Dose History",
-                    wellness: dict.navWellness || "30-Day Wellness",
-                    directory: dict.navDirectory || "Doctors & Hospitals",
-                    family: dict.navFamily || "Family Alert",
-                    report: dict.navReport || "Doctor Report",
-                    settings: dict.navSettings || "Settings"
-                };
-                const pt = document.getElementById('pageTitle');
-                if (pt) pt.innerText = titles[pageId] || pageId;
-            }
-
-            // 5. Trigger Master Render for dynamic components
             renderAll();
         }
 
@@ -5586,7 +5334,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
             document.getElementById('regPin').value = "1234";
             document.getElementById('regCaregiverName').value = "राहुल शर्मा (बेटा)";
             document.getElementById('regCaregiverPhone').value = "9876543210";
-            const cb = document.getElementById('regConsentCheckbox'); if (cb) { cb.checked = true; }
+            document.getElementById('regTerms').checked = true;
             showAuthAlert("✨ डेमो जानकारी भर दी गई है! अब नीचे 'खाता बनाएं' पर क्लिक करें।", "info");
         }
 
@@ -5773,7 +5521,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
             const pin = document.getElementById('regPin').value.trim();
             const caregiverName = document.getElementById('regCaregiverName').value.trim();
             const caregiverPhone = document.getElementById('regCaregiverPhone').value.trim();
-            const termsChecked = (document.getElementById('regConsentCheckbox') ? document.getElementById('regConsentCheckbox').checked : true);
+            const termsChecked = document.getElementById('regTerms').checked;
 
             if (!name) {
                 showAuthAlert(currentLang === 'hi' ? "कृपया मरीज का पूरा नाम दर्ज करें।" : "Please enter patient's full name.", 'error');
@@ -5898,15 +5646,12 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
             navTo('prescription');
             notify(currentLang === 'hi' ? "कैमरा / पर्ची स्कैनर चालू हो रहा है..." : "Starting Camera / Prescription Scanner...");
             setTimeout(() => {
-                const inp = document.getElementById('rxCameraInput') || document.getElementById('rxGalleryInput'); if (inp) inp.click();
+                document.getElementById('rxFileInput').click();
             }, 300);
         }
 
         function toggleSidebar() {
-            const sb = document.getElementById('appSidebar');
-            const bd = document.getElementById('sidebarBackdrop');
-            if (sb) sb.classList.toggle('open');
-            if (bd) bd.classList.toggle('active', sb && sb.classList.contains('open'));
+            document.getElementById('appSidebar').classList.toggle('open');
         }
 
         function toggleTheme() {
@@ -5928,7 +5673,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
             if (preview.style.display === 'block') {
                 return;
             }
-            const inp = document.getElementById('rxCameraInput') || document.getElementById('rxGalleryInput'); if (inp) inp.click();
+            document.getElementById('rxFileInput').click();
         }
 
         function handleRxFileSelect(e) {
@@ -7326,7 +7071,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
                 const lat = pos.coords.latitude.toFixed(5);
                 const lon = pos.coords.longitude.toFixed(5);
                 document.getElementById('locStatus').innerText = "● LIVE GPS ACTIVE";
-                const lc = document.getElementById('locCoords'); if (lc) lc.innerHTML = `${lat}, ${lon} &nbsp; <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank" style="color:var(--primary); text-decoration:underline;">${currentLang === 'hi' ? 'Google Maps पर देखें' : 'View on Maps'}</a>`;
+                document.getElementById('locCoords').innerHTML = `${lat}, ${lon} &nbsp; <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank" style="color:var(--primary); text-decoration:underline;">${currentLang === 'hi' ? 'Google Maps पर देखें' : 'View on Maps'}</a>`;
             });
         }
 
@@ -8161,71 +7906,45 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
 
         // ==================== MASTER UNIFIED RENDER ====================
         function renderAll() {
-            // 1. Language-Aware Patient Names & Localized Strings
-            const isHi = currentLang === 'hi';
-            let displayName = user.name;
-            let displayCaregiver = user.caregiver || 'अमित शर्मा (बेटा) - 9876543210';
-            let displayGender = user.gender || 'पुरुष';
-
-            if (!isHi) {
-                if (user.name && user.name.includes('रमेश')) displayName = "Mr. Ramesh Sharma";
-                else if (user.name && user.name.includes('सुनीता')) displayName = "Mrs. Sunita Sharma";
-                displayCaregiver = displayCaregiver.replace('अमित शर्मा (बेटा)', 'Amit Sharma (Son)').replace('केयरगिवर', 'Caregiver');
-                displayGender = (user.gender && user.gender.includes('महिला')) ? 'Female' : 'Male';
-            } else {
-                if (user.name && user.name.includes('Ramesh')) displayName = "श्री रमेश शर्मा";
-                else if (user.name && user.name.includes('Sunita')) displayName = "श्रीमती सुनीता शर्मा";
-            }
-
-            // 2. Time-based Greeting
+            // 1. Time-based Greeting
             const hour = new Date().getHours();
             let greeting = "सुप्रभात";
-            if (!isHi) {
+            if (currentLang === 'en') {
                 greeting = hour < 12 ? "Good Morning" : (hour < 17 ? "Good Afternoon" : "Good Evening");
             } else {
                 greeting = hour < 12 ? "सुप्रभात" : (hour < 17 ? "शुभ दोपहर" : "शुभ संध्या");
             }
             const greetingEl = document.getElementById('dashGreetingTitle');
             if (greetingEl) {
-                greetingEl.innerText = isHi ? `${greeting}, ${displayName} जी! 👋` : `${greeting}, ${displayName}! 👋`;
+                greetingEl.innerText = `${greeting}, ${user.name} जी! 👋`;
             }
 
-            // 3. Patient Profile & Tags
-            document.getElementById('sbUserName').innerText = displayName;
-            document.getElementById('sbAvatar').innerText = (displayName || 'R').charAt(0).toUpperCase();
-            document.getElementById('sbUserSub').innerText = `${user.age || 65} ${isHi ? 'वर्ष • क्रोनिक केयर' : 'yrs • Chronic Care'}`;
+            // 2. Patient Profile & Tags
+            document.getElementById('sbUserName').innerText = user.name;
+            document.getElementById('sbAvatar').innerText = (user.name || 'R').charAt(0).toUpperCase();
+            document.getElementById('sbUserSub').innerText = `${user.age || 65} ${currentLang === 'hi' ? 'वर्ष • क्रोनिक केयर' : 'yrs • Chronic Care'}`;
             
             const patSubEl = document.getElementById('dashPatientSub');
             if (patSubEl) {
-                patSubEl.innerText = `${user.age || 65} ${isHi ? 'वर्ष / ' + displayGender : 'yrs / ' + displayGender} • ${isHi ? 'आईडी' : 'ID'}: #CL-8921 • ${isHi ? 'क्रोनिक केयर' : 'Chronic Care'}`;
+                patSubEl.innerText = `${user.age || 65} ${currentLang === 'hi' ? 'वर्ष / ' + (user.gender || 'पुरुष') : 'yrs / ' + (user.gender || 'Male')} • आईडी: #CL-8921 • क्रोनिक केयर`;
             }
 
             const tagContainer = document.getElementById('dashConditionTags');
             if (tagContainer) {
                 tagContainer.innerHTML = `
-                    <span class="pill green" id="dashTagBp">🩺 ${isHi ? 'बीपी (हाइपरटेंशन)' : 'BP (Hypertension)'}</span>
-                    <span class="pill green" id="dashTagSugar">🩸 ${isHi ? 'डायबिटीज' : 'Diabetes'}</span>
-                    <span class="pill orange" id="dashStockBadge" onclick="openStockRefillModal()" style="cursor:pointer;" title="${isHi ? 'दवा स्टॉक व रीफिल देखें' : 'View Stock & Refill'}">⚠️ ${isHi ? '3 दिन का स्टॉक बाकी' : '3 Days Stock Left'}</span>
+                    <span class="pill green" id="dashTagBp">🩺 ${currentLang === 'hi' ? 'बीपी (हाइपरटेंशन)' : 'BP (Hypertension)'}</span>
+                    <span class="pill green" id="dashTagSugar">🩸 ${currentLang === 'hi' ? 'डायबिटीज' : 'Diabetes'}</span>
+                    <span class="pill orange" id="dashStockBadge" onclick="openStockRefillModal()" style="cursor:pointer;" title="${currentLang === 'hi' ? 'दवा स्टॉक व रीफिल देखें' : 'View Stock & Refill'}">⚠️ ${currentLang === 'hi' ? '3 दिन का स्टॉक बाकी' : '3 Days Stock Left'}</span>
                 `;
             }
 
-            // Emergency SOS Box Sync
-            const sosBtn = document.getElementById('dashSosBtn');
-            if (sosBtn) sosBtn.innerText = isHi ? '🚨 108 आपातकालीन SOS कॉल' : '🚨 108 Emergency SOS Call';
-            const medIdBox = document.getElementById('dashMedIdBox');
-            if (medIdBox) {
-                medIdBox.innerHTML = isHi 
-                    ? `🩸 <strong>ब्लड ग्रुप:</strong> B+ • <strong>एलर्जी:</strong> Sulfa Drugs<br>👨‍⚕️ <strong>केयरगिवर:</strong> <span>${displayCaregiver}</span>`
-                    : `🩸 <strong>Blood Group:</strong> B+ • <strong>Allergies:</strong> Sulfa Drugs<br>👨‍⚕️ <strong>Caregiver:</strong> <span>${displayCaregiver}</span>`;
-            }
-
-            document.getElementById('rPatient').innerText = displayName;
-            document.getElementById('rAgeGender').innerText = `${user.age || 65} ${isHi ? 'वर्ष / ' + displayGender : 'yrs / ' + displayGender}`;
-            document.getElementById('setUserName').value = displayName;
+            document.getElementById('rPatient').innerText = user.name;
+            document.getElementById('rAgeGender').innerText = `${user.age || 65} ${currentLang === 'hi' ? 'वर्ष / ' + (user.gender || 'पुरुष') : 'yrs / ' + (user.gender || 'Male')}`;
+            document.getElementById('setUserName').value = user.name;
             document.getElementById('setUserAge').value = user.age || 65;
-            document.getElementById('rDate').innerText = new Date().toLocaleDateString(isHi ? 'hi-IN' : 'en-US');
+            document.getElementById('rDate').innerText = new Date().toLocaleDateString(currentLang === 'hi' ? 'hi-IN' : 'en-US');
 
-            // 4. Dynamic Adherence Calculation (Strict & Single Source of Truth)
+            // 3. Dynamic Adherence Calculation (Strict & Single Source of Truth)
             const adh = calculateAdherence();
             document.getElementById('statMeds').innerText = medicines.length;
             document.getElementById('statTaken').innerText = adh.taken + adh.late;
@@ -8234,26 +7953,24 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
             
             const statRateLabel = document.getElementById('statRateLabel');
             if (statRateLabel) {
-                statRateLabel.innerText = isHi ? 'अनुपालन दर (30 दिन)' : 'Adherence Rate (30 Days)';
+                statRateLabel.innerText = currentLang === 'hi' ? 'अनुपालन दर (30 दिन)' : 'Adherence Rate (30 Days)';
             }
 
             // Update Report Score Pill and summary
             const reportScorePill = document.getElementById('rReportScorePill');
             if (reportScorePill) {
-                reportScorePill.innerText = `${adh.pct}% (${adh.pct >= 90 ? (isHi ? 'उत्कृष्ट' : 'Excellent') : (isHi ? 'संतोषजनक' : 'Good')})`;
+                reportScorePill.innerText = `${adh.pct}% (${adh.pct >= 90 ? (currentLang === 'hi' ? 'उत्कृष्ट' : 'Excellent') : (currentLang === 'hi' ? 'संतोषजनक' : 'Good')})`;
             }
             const shareReportAdh = document.getElementById('shareReportAdhPill');
             if (shareReportAdh) {
-                shareReportAdh.innerText = isHi ? `अनुपालन: ${adh.pct}% (A+)` : `Adherence: ${adh.pct}% (A+)`;
+                shareReportAdh.innerText = `अनुपालन: ${adh.pct}% (A+)`;
             }
             const shareReportSum = document.getElementById('shareReportDosesSummary');
             if (shareReportSum) {
-                shareReportSum.innerHTML = isHi 
-                    ? `📊 <strong>30-दिवसीय स्कोर:</strong> कुल ${adh.taken + adh.late} खुराकें ली गईं, केवल ${adh.missed} खुराकें छूटीं`
-                    : `📊 <strong>30-Day Score:</strong> Total ${adh.taken + adh.late} doses taken, only ${adh.missed} missed`;
+                shareReportSum.innerHTML = `📊 <strong>30-दिवसीय स्कोर:</strong> कुल ${adh.taken + adh.late} खुराकें ली गईं, केवल ${adh.missed} खुराकें छूटीं`;
             }
 
-            // 5. Today's Medicine Schedule Table & Today's Progress Bar
+            // 4. Today's Medicine Schedule Table & Today's Progress Bar
             const dBody = document.getElementById('dashTableBody');
             const emptyState = document.getElementById('dashScheduleEmptyState');
             
@@ -8268,7 +7985,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
 
             if (tTakenEl) tTakenEl.innerText = todayTakenCount;
             if (tTotalEl) tTotalEl.innerText = todayTotalCount;
-            if (tScoreEl) tScoreEl.innerText = `${todayPct}% ${isHi ? 'संपन्न' : 'Done'}`;
+            if (tScoreEl) tScoreEl.innerText = `${todayPct}% ${currentLang === 'hi' ? 'संपन्न' : 'Done'}`;
             if (tProgress) tProgress.style.width = `${todayPct}%`;
 
             if (dBody) {
@@ -8285,13 +8002,13 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
 
                         let statusBadge = '';
                         if (m.status === 'Taken') {
-                            statusBadge = `<span class="pill green">${isHi ? 'पूर्ण ✓' : 'Taken ✓'}</span>`;
+                            statusBadge = `<span class="pill green">${currentLang === 'hi' ? 'पूर्ण ✓' : 'Taken ✓'}</span>`;
                         } else if (m.status === 'Late') {
-                            statusBadge = `<span class="pill late">${isHi ? 'देरी से ली' : 'Late'}</span>`;
+                            statusBadge = `<span class="pill late">${currentLang === 'hi' ? 'देरी से ली' : 'Late'}</span>`;
                         } else if (m.status === 'Skipped' || m.status === 'Missed') {
-                            statusBadge = `<span class="pill skipped">${isHi ? 'छूटी हुई' : 'Skipped'}</span>`;
+                            statusBadge = `<span class="pill skipped">${currentLang === 'hi' ? 'छूटी हुई' : 'Skipped'}</span>`;
                         } else {
-                            statusBadge = `<span class="pill orange">${isHi ? 'बाकी है' : 'Pending'}</span>`;
+                            statusBadge = `<span class="pill orange">${currentLang === 'hi' ? 'बाकी है' : 'Pending'}</span>`;
                         }
 
                         return `
@@ -8303,10 +8020,10 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
                                 <td>${statusBadge}</td>
                                 <td>
                                     ${isTaken 
-                                        ? `<span style="color:var(--green); font-weight:800; font-size:13px;">${isHi ? 'ली गई ✓' : 'Taken ✓'}</span>`
-                                        : `<button class="btn success" style="padding:7px 12px; font-size:12.5px; font-weight:700;" onclick="takeNextDoseWithCelebration('${m.name}', '${m.time}')">${isHi ? '✓ ले ली' : '✓ Taken'}</button>
-                                           <button class="btn danger" style="padding:7px 10px; font-size:12.5px; font-weight:700; margin-left:4px;" onclick="promptSkipDose('${m.name}', '${m.time}')">${isHi ? '✕ छोड़ दी' : '✕ Skip'}</button>
-                                           <button class="btn secondary" style="padding:7px 10px; font-size:12.5px; margin-left:4px;" onclick="triggerAlarmModal('${m.name}', '${m.time}')" title="${isHi ? 'अलार्म' : 'Alarm'}">🔔</button>`
+                                        ? `<span style="color:var(--green); font-weight:800; font-size:13px;">${currentLang === 'hi' ? 'ली गई ✓' : 'Taken ✓'}</span>`
+                                        : `<button class="btn success" style="padding:7px 12px; font-size:12.5px; font-weight:700;" onclick="takeNextDoseWithCelebration('${m.name}', '${m.time}')">${currentLang === 'hi' ? '✓ ले ली' : '✓ Taken'}</button>
+                                           <button class="btn danger" style="padding:7px 10px; font-size:12.5px; font-weight:700; margin-left:4px;" onclick="promptSkipDose('${m.name}', '${m.time}')">${currentLang === 'hi' ? '✕ छोड़ दी' : '✕ Skip'}</button>
+                                           <button class="btn secondary" style="padding:7px 10px; font-size:12.5px; margin-left:4px;" onclick="triggerAlarmModal('${m.name}', '${m.time}')" title="अलार्म टेस्ट">🔔</button>`
                                     }
                                 </td>
                             </tr>
@@ -8315,7 +8032,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
                 }
             }
 
-            // 6. My Medicines Table
+            // 5. My Medicines Table
             const mBody = document.getElementById('medsTableBody');
             if (mBody) {
                 mBody.innerHTML = medicines.map(m => `
@@ -8323,13 +8040,13 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
                         <td><strong>${getMedName(m)}</strong></td>
                         <td>${getMedDose(m)}</td>
                         <td>${m.time}</td>
-                        <td>${m.days} ${isHi ? 'दिन' : 'days'}</td>
-                        <td><button class="btn danger" style="padding:5px 10px; font-size:12px;" onclick="deleteMed(${m.id})">${isHi ? 'हटाएं' : 'Delete'}</button></td>
+                        <td>${m.days} ${currentLang === 'hi' ? 'दिन' : 'days'}</td>
+                        <td><button class="btn danger" style="padding:5px 10px; font-size:12px;" onclick="deleteMed(${m.id})">${currentLang === 'hi' ? 'हटाएं' : 'Delete'}</button></td>
                     </tr>
-                `).join('') || `<tr><td colspan="5" style="text-align:center;">${isHi ? 'कोई दवा नहीं है।' : 'No medicines.'}</td></tr>`;
+                `).join('') || `<tr><td colspan="5" style="text-align:center;">${currentLang === 'hi' ? 'कोई दवा नहीं है।' : 'No medicines.'}</td></tr>`;
             }
 
-            // 7. Dynamic Doctor Clinical Report Table Body
+            // 6. Dynamic Doctor Clinical Report Table Body
             const repBody = document.getElementById('reportMedsTableBody');
             if (repBody) {
                 repBody.innerHTML = medicines.map(m => {
@@ -8339,23 +8056,26 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
                             <td><strong>${getMedName(m)}</strong></td>
                             <td>${getMedDose(m)}</td>
                             <td>${m.time}</td>
-                            <td>${stats.taken} ${isHi ? 'दिन' : 'days'}</td>
-                            <td>${stats.missed} ${isHi ? 'दिन' : 'days'}</td>
+                            <td>${stats.taken} दिन</td>
+                            <td>${stats.missed} दिन</td>
                             <td><span class="pill ${stats.pct >= 90 ? 'green' : 'orange'}">${stats.pct}%</span></td>
                         </tr>
                     `;
                 }).join('');
             }
 
-            // 8. Caregiver details on Dashboard
+            // 7. Caregiver details on Dashboard
             const cgNameEl = document.getElementById('dashCaregiverName');
             const cgPhoneEl = document.getElementById('dashCaregiverPhone');
             const cgTextEl = document.getElementById('dashCaregiverText');
-            if (cgTextEl) cgTextEl.innerText = displayCaregiver;
-            if (cgNameEl) cgNameEl.innerText = displayCaregiver.split('-')[0].trim();
-            if (cgPhoneEl && displayCaregiver.includes('-')) cgPhoneEl.innerText = displayCaregiver.split('-')[1].trim();
+            if (user.caregiver) {
+                const parts = user.caregiver.split('-');
+                if (cgNameEl) cgNameEl.innerText = parts[0].trim();
+                if (cgPhoneEl && parts.length > 1) cgPhoneEl.innerText = parts[1].trim();
+                if (cgTextEl) cgTextEl.innerText = user.caregiver;
+            }
 
-            // 9. Sub-components & Widgets
+            // 8. Sub-components & Widgets
             renderHistorySection();
             updateNextDoseCard();
             renderVitalsWidget();
@@ -8363,6 +8083,7 @@ Generated via CareLoop Patient Companion System (CareLoop Healthcare India)`;
             filterDirectory();
         }
 
+        // Live 1-second countdown loop
         if (nextDoseInterval) clearInterval(nextDoseInterval);
         nextDoseInterval = setInterval(updateNextDoseCard, 1000);
 
